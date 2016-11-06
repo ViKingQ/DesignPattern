@@ -1,0 +1,48 @@
+#ifndef __OBSERVER_H__
+#define __OBSERVER_H__
+
+#include <iostream>
+
+using namespace std;
+
+class CSubject;
+
+//////////////////////////////////////////////////////////////////////////
+class CObserver
+{
+public:
+	CObserver(){}
+	virtual ~CObserver(){}
+
+	virtual void update(CSubject* pSubject, void* pArg = NULL) = 0;
+};
+//////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////
+class CRSSReader : public CObserver
+{
+public:
+	CRSSReader(const string& strName);
+
+public:
+	virtual void update(CSubject* pSubject, void* pArg = NULL);
+
+private:
+	string m_strName;
+};
+//////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////
+class CMailReader : public CObserver
+{
+public:
+	CMailReader(const string& strName);
+
+public:
+	virtual void update(CSubject* pSubject, void* pArg = NULL);
+
+private:
+	string m_strName;
+};
+//////////////////////////////////////////////////////////////////////////
+#endif	//__OBSERVER_H__
